@@ -2,6 +2,9 @@
   "name": "e2e-project",
   "version": "1.0.0",
   "main": "index.js",
+  "engines": {
+    "node": ">=16.0.0"
+  },  
   "mocha": {
     "spec": "cypress/integration/mocha/**/*.spec.js"
   },
