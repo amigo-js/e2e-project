@@ -1,0 +1,19 @@
+version: '3'
+services:
+  cypress:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - DISPLAY=:99
+      - TERM=xterm-256color
+      - CI=true
+    volumes:
+      - .:/app
+      - /dev/shm:/dev/shm
+    ports:
+      - 8080:8080
+    networks:
+      - cypress_net
+networks:
+  cypress_net:
