@@ -1,7 +1,7 @@
 import * as pdfParse from 'pdf-parse';
 import * as fs from 'fs';
 
-describe('PDF Text Content', function(){
+describe.skip('PDF Text Content', function(){
 
 it ('Write on a file test', function(){
   

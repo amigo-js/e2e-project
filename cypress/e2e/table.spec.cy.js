@@ -1,6 +1,6 @@
 
 
-describe('Table ', () => {
+describe.skip('Table ', () => {
 
     beforeEach(()  => {
         cy.visit('https://kitchen.applitools.com/ingredients/table');

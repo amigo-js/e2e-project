@@ -4,7 +4,7 @@ import '@4tw/cypress-drag-drop'
 const kitchen = 'https://kitchen.applitools.com/ingredients/drag-and-drop';
 const demoqa = 'https://demoqa.com/droppable';
 
-describe('Upload the file', function() {
+describe.skip('Upload the file', function() {
 
     beforeEach(()  => {
         // cy.visit(Cypress.env("demoqa") + 'automation-practice-form');

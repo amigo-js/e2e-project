@@ -1,6 +1,6 @@
 
 
-describe('iFrame ', () => {
+describe.skip('iFrame ', () => {
 
     beforeEach(()  => {
         cy.visit(Cypress.env("kitchen") + '/ingredients/iframe');

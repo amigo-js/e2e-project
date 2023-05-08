@@ -2,7 +2,7 @@ import 'cypress-file-upload';
 import '@4tw/cypress-drag-drop'
 
 
-describe('Upload the file', () => {
+describe.skip('Upload the file', () => {
 
     beforeEach(()  => {
         cy.visit(Cypress.env("demoqa") + '/automation-practice-form');

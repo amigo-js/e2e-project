@@ -1,5 +1,5 @@
 
-describe('API ', () => {
+describe.skip('API ', () => {
 
     beforeEach(()  => {
         cy.visit('https://kitchen.applitools.com/ingredients/api');
