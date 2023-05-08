@@ -8,5 +8,6 @@ RUN npm ci --quiet
 # COPY . .
 # RUN $(npm bin)/cypress verify
 # CMD ["npm", "run", "test"]
-ENTRYPOINT [ "npx", "cypress", "run" ]
-CMD [ "" ]
+# ENTRYPOINT [ "npx", "cypress", "run" ]
+CMD ["npm", "run", "test"]
+# CMD [ "" ]
