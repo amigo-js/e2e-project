@@ -1,32 +1,11 @@
-// import 'cypress-file-upload';
-// import '@4tw/cypress-drag-drop';
-require('cypress-file-upload')
-require('@4tw/cypress-drag-drop')
-// const {username, password} = require("../fixtures/credentials/credentials.json");
 const LogInPage = require("../support/pages/login.page");
 
-Cypress.Commands.add('visitEnv', (envName, endpoint = '') => {
-    const url = Cypress.env(envName) + endpoint;
-    cy.visit(url);
-});
-
-// Cypress.Commands.add('visitEnv', (envName, endpoint = '') => {
-//     const url = Cypress.config('e2e')[envName].baseUrl + endpoint;
-//     cy.visit(url);
-// });
-// Cypress.Commands.add('visitEnv', (envName, endpoint = '') => {
-//     const url = Cypress.config('e2e')[envName].baseUrl + endpoint;
-//     cy.visit(url);
-// });
-
-
-  
 const logInPage = new LogInPage();
 
-Cypress.Commands.add('login', () => {
+Cypress.Commands.add('logIn', () => {
     cy.fixture('credentials/credentials.json').then(credentials => {
         cy.session(credentials, () => {
-        cy.visit('/', { failOnStatusCode: false })
+        cy.visit(Cypress.env("demoblaze"), { failOnStatusCode: false });
         logInPage.clickLogIn().then(() => {
             logInPage.getUserNameInput().then(() => {
             logInPage.typeUserNameInput(credentials.username).then(() => {

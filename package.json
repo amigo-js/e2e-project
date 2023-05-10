@@ -4,23 +4,29 @@
   "main": "index.js",
   "engines": {
     "node": ">=16.0.0"
-  },  
+  },
   "mocha": {
     "spec": "cypress/integration/mocha/**/*.spec.js"
   },
   "scripts": {
     "open": "cypress open",
     "test": "docker-compose up",
-
     "testMocha": "mocha 'test/**/async.app.spec.js' --timeout 50000",
     "cmdline": "mocha './/test//async.app.spec.js' -b",
     "testparallel": "mocha --parallel",
     "mochawesomereport": "mocha .//test//*.js --reporter mochawesome --reporter-options reportDir=Report,reportFilename=Test_Report",
     "mochaTest": "mocha",
-    "cookie": "cypress open --env e2e='{\"kitchen\":{\"baseUrl\":\"https://kitchen.applitools.com/\"}}' 'cypress/e2e/cookie.spec.cy.js'"
+    "cookie": "cypress open --env e2e='{\"kitchen\":{\"baseUrl\":\"https://kitchen.applitools.com/\"}}' 'cypress/e2e/cookie.spec.cy.js'",
+    "demoblaze": "cypress open --env e2e='{\"demoblaze\":{\"baseUrl\":\"https://www.demoblaze.com/\"}}'",
+    "run:demoblaze:test": "cypress run --env e2e='{\"demoblaze\":{\"baseUrl\":\"https://www.demoblaze.com/\"}}' --spec 'cypress/e2e/login.spec.cy.js,cypress/e2e/cheapestPhone.spec.cy.js'",
+    "cypress:open": "cypress open",
+    "cypress:runDefault": "cypress run --spec cypress/e2e/*.spec.cy.js",
+    "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/*.spec.cy.js",
+    "cypress:run:chrome:headless": "cypress run --headless --browser chrome --spec cypress/e2e/*.spec.cy.js",
+    "read": "cypress run --spec cypress/e2e/readWriteFile.spec.cy.js",
+    "readTwo": "cypress run --spec cypress/e2e/test.spec.cy.js",
 
-
-
+    "html:report": "cypress run --spec cypress/e2e/*spec.cy.js --browser chrome --headed"
   },
   "author": "",
   "license": "ISC",
@@ -30,13 +36,15 @@
     "cypress": "^12.4.0"
   },
   "devDependencies": {
+    "@4tw/cypress-drag-drop": "^2.2.2",
     "axios": "^1.4.0",
     "chai": "^4.3.7",
-    "mocha": "^10.2.0",
     "cypress-file-upload": "^5.0.8",
+    "cypress-iframe": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "mocha": "^10.2.0",
     "mochawesome": "^7.1.3",
-    "pdf-parse": "^1.1.1",
-    "popper": "^1.0.1",
-    "@4tw/cypress-drag-drop": "^2.2.2"
+    "cypress-mochawesome-reporter": "^3.4.0",
+    "pdf-parse": "^1.1.1"
   }
 }

@@ -14,26 +14,14 @@ class CheapestPhonePage {
   }
 
   findCheapestProduct() {
-    cy.get('.col-lg-4.col-md-6.mb-4 h5')
+    cy.get('div.col-lg-4.col-md-6.mb-4')
       .invoke('text')
-      .then(texts => {
-        const prices = [];
-        const priceMap = {};
-  
-        texts.split('\n').forEach(text => {
-          const priceString = text.match(/\$(\d+(\.\d{1,2})?)/);
-          if (priceString) {
-            const price = Number(priceString[1]);
-            prices.push(price);
-            priceMap[price] = text;
-          }
-        });
-  
+      .then(text => {
+        const prices = text.match(/\$(\d+(\.\d{1,2})?)/g)
+          .map(price => Number(price.replace('$', '')));
         const minPrice = Math.min(...prices);
         console.log('Minimum price is:', minPrice);
-  
-        cy.get('.col-lg-4.col-md-6.mb-4')
-          .contains(`$${minPrice}`)
+        cy.contains(`$${minPrice}`)
           .closest('.col-lg-4.col-md-6.mb-4')
           .find('a')
           .invoke('attr', 'href')
@@ -44,43 +32,6 @@ class CheapestPhonePage {
       });
   }
   
-
-  // findCheapestProduct() {
-  //   cy.get('.col-lg-4.col-md-6.mb-4 h5')
-  //     .invoke('text')
-  //     .then((texts: string | string[]) => {
-  //       if (typeof texts === 'string') {
-  //         texts = [texts];
-  //       }
-
-  //       const prices: number[] = [];
-  //       // map price to product name
-  //       const priceMap: { [key: number]: string } = {}; 
-
-  //       texts.forEach(text => {
-  //         const priceStrings = text.split('$').filter(str => str.length > 0);
-  //         const numericPrices = priceStrings.map(str => Number(str.trim()));
-  //         prices.push(...numericPrices);
-  //         // assume first price is the minimum
-  //         priceMap[numericPrices[0]] = text; 
-  //       });
-
-  //       const minPrice = Math.min(...prices);
-  //       console.log('Minimum price is:', minPrice);
-
-  //       // Find the product card with the minimum price and click on it
-  //       cy.get('.col-lg-4.col-md-6.mb-4')
-  //         .contains(`$${minPrice}`)
-  //         .closest('.col-lg-4.col-md-6.mb-4')
-  //         .find('a')
-  //         .invoke('attr', 'href')
-  //         .then(href => {
-  //           // console log href and then reusing it to lunch the page with phone with min price
-  //           console.log(href);
-  //           cy.visit(`https://www.demoblaze.com/${href}`);
-  //         });
-  //     });
-  // }
 }
 
 module.exports = CheapestPhonePage;

@@ -1,36 +1,17 @@
 
+describe('iFrame', () => {
 
-describe.skip('iFrame ', () => {
-
-    beforeEach(()  => {
-        cy.visit(Cypress.env("kitchen") + '/ingredients/iframe');
+    before(()  => {
+        cy.visit(Cypress.env("herokuapp") + '/iframe');
 	})
 
-	it('Should find a table in the iframe', () => {
-		cy.get('#the-kitchen-table').its('0.contentDocument.body')
+
+    it('Should type text in the iframe', () => {
+		const iframe = cy.get('#mce_0_ifr').its('0.contentDocument.body')
+        .should('be.visible')
         .then(cy.wrap)
-        .find('#fruits-vegetables')
-        .should('be.visible');
-	})	
-	
-    it('Should find a video in the iframe', () => {
-		cy.get('#youtube-table-cypress').its('0.contentDocument.body')
-        .then(cy.wrap)
-        .find('#player')
-        .should('be.visible');
-	})	
-
-
-    it('Should find a video in the iframe', () => {
-        cy.visit('');
-        cy.get('#iframe-selector').then(function($iframe) {
-
-            let iframeBody = $iframe.contents().find('body');
-            cy.wrap(iframeBody)
-            .clear()
-            .type('Hello world!')
-            .type('{selectall}')
-        })
+        .clear()
+        .type('Hello')
 	})	
 
 });

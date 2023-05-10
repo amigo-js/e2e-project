@@ -2,24 +2,22 @@ const LogInPage = require("../support/pages/login.page")
 
 const logInPage = new LogInPage();
 
-describe('Launches', () => {
+describe('Login', () => {
 
 	beforeEach(() => {
-		cy.login();
+		cy.visit(Cypress.env("demoblaze"));
+		cy.logIn();
 	});
 
 	it('Successfully login', function() {
-		cy.visit('/');
-		cy.wait(1000); // подождать 3 секунды
+		cy.visit(Cypress.env("demoblaze"));
 		logInPage.welcomeVerification();
 	});
 
 
-	it('Successfully login 2', function() {
-		cy.visit('/');
-		cy.wait(1000); // подождать 3 секунды
+	it('Successfully login and restored the session', function() {
+		cy.visit(Cypress.env("demoblaze"));
 		console.log('TEST');
-	
 	});
 
 });
