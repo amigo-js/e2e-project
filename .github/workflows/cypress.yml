@@ -13,20 +13,20 @@ jobs:
           browser: chrome
           start: npm run test
 
-      - name: Upload Mochawesome Report
-        uses: actions/upload-artifact@v2
-        with:
-          name: Mochawesome Report
-          path: cypress/reports/mochawesome-report
+      # - name: Upload Mochawesome Report
+      #   uses: actions/upload-artifact@v2
+      #   with:
+      #     name: Mochawesome Report
+      #     path: cypress/reports/mochawesome-report
 
-      # - name: Copy test execution videos and screenshots
-      #   run: |
-      #     mkdir public
-      #     cp -r cypress/videos public/videos
-      #     cp -r cypress/screenshots public/screenshots
+      - name: Copy test execution videos and screenshots
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+          cp -r cypress/screenshots public/screenshots
 
-      # - name: Merge test reports
-      #   run: npm run combine:report
+      - name: Merge test reports
+        run: npm run combine:report
 
-      # - name: Generate HTML report
-      #   run: npm run generate:report
+      - name: Generate HTML report
+        run: npm run generate:report
