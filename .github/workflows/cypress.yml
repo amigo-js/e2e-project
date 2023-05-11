@@ -6,27 +6,50 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-
+      # Install NPM dependencies, cache them correctly
+      # and run all Cypress tests 
       - name: Cypress run
         uses: cypress-io/github-action@v5
         with:
+          # build: npm run build
           browser: chrome
           start: npm run test
+      - name: Uploading artifact
+        uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-execution-report
+          path: cypress/reports/html
+          retention-days: 30
+          
+
+
+
 
       # - name: Upload Mochawesome Report
       #   uses: actions/upload-artifact@v2
       #   with:
       #     name: Mochawesome Report
       #     path: cypress/reports/mochawesome-report
+          
 
-      - name: Copy test execution videos and screenshots
-        run: |
-          mkdir public
-          cp -r cypress/videos public/videos
-          cp -r cypress/screenshots public/screenshots
 
-      - name: Merge test reports
-        run: npm run combine:report
 
-      - name: Generate HTML report
-        run: npm run generate:report
+
+
+
+
+
+
+
+      # - name: Copy test execution videos and screenshots
+      #   run: |
+      #     mkdir public
+      #     cp -r cypress/videos public/videos
+      #     cp -r cypress/screenshots public/screenshots
+
+      # - name: Merge test reports
+      #   run: npm run combine:report
+
+      # - name: Generate HTML report
+      #   run: npm run generate:report
