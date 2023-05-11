@@ -1,7 +1,7 @@
 {
   "name": "e2e-project",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "e2e.js",
   "engines": {
     "node": ">=16.0.0"
   },
@@ -11,21 +11,15 @@
   "scripts": {
     "open": "cypress open",
     "test": "docker-compose up",
-    "testMocha": "mocha 'test/**/async.app.spec.js' --timeout 50000",
-    "cmdline": "mocha './/test//async.app.spec.js' -b",
-    "testparallel": "mocha --parallel",
-    "mochawesomereport": "mocha .//test//*.js --reporter mochawesome --reporter-options reportDir=Report,reportFilename=Test_Report",
-    "mochaTest": "mocha",
-    "cookie": "cypress open --env e2e='{\"kitchen\":{\"baseUrl\":\"https://kitchen.applitools.com/\"}}' 'cypress/e2e/cookie.spec.cy.js'",
-    "demoblaze": "cypress open --env e2e='{\"demoblaze\":{\"baseUrl\":\"https://www.demoblaze.com/\"}}'",
+    "run:cookie:test": "cypress run --env e2e='{\"kitchen\":{\"baseUrl\":\"https://kitchen.applitools.com/\"}}' --spec 'cypress/e2e/cookie.spec.cy.js'",
     "run:demoblaze:test": "cypress run --env e2e='{\"demoblaze\":{\"baseUrl\":\"https://www.demoblaze.com/\"}}' --spec 'cypress/e2e/login.spec.cy.js,cypress/e2e/cheapestPhone.spec.cy.js'",
-    "cypress:open": "cypress open",
-    "cypress:runDefault": "cypress run --spec cypress/e2e/*.spec.cy.js",
-    "cypress:runChrome": "cypress run --browser chrome --spec cypress/e2e/*.spec.cy.js",
-    "cypress:run:chrome:headless": "cypress run --headless --browser chrome --spec cypress/e2e/*.spec.cy.js",
-    "read": "cypress run --spec cypress/e2e/readWriteFile.spec.cy.js",
-    "readTwo": "cypress run --spec cypress/e2e/test.spec.cy.js",
-
+    "cypress:runDefault": "cypress run --spec 'cypress/e2e/*.spec.cy.js'",
+    "cypress:runChrome": "cypress run --browser chrome --spec 'cypress/e2e/*.spec.cy.js'",
+    "cypress:run:chrome:headless": "cypress run --headless --browser chrome --spec 'cypress/e2e/*.spec.cy.js'",
+    "readWrite": "cypress run --spec 'cypress/e2e/readWriteFile.spec.cy.js'",
+    "cy:run:chrome": "cypress open --browser chrome",
+    "cy:run:electron": "cypress open --browser electron",
+    "cy:run_browsers": "cypress run --headed --browser chrome & cypress run --headed --browser electron",
     "html:report": "cypress run --spec cypress/e2e/*spec.cy.js --browser chrome --headed"
   },
   "author": "",

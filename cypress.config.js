@@ -1,6 +1,7 @@
 const fs = require('fs');
 const { defineConfig } = require('cypress');
 const pdfParse = require('pdf-parse');
+// const { mochawesome } = require('mochawesome');
 
 module.exports = defineConfig({
   reporter: 'cypress-mochawesome-reporter',

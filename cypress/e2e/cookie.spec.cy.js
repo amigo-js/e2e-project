@@ -3,7 +3,6 @@ describe('Cookie kitchen', () => {
 
     beforeEach(()  => {
         cy.visit(Cypress.env("kitchen") + '/ingredients/cookie');
-
 	})
 
 	it('Should get the value of a cookie', () => {

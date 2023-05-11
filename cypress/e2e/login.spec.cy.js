@@ -1,5 +1,4 @@
 const LogInPage = require("../support/pages/login.page")
-
 const logInPage = new LogInPage();
 
 describe('Login', () => {
@@ -14,10 +13,8 @@ describe('Login', () => {
 		logInPage.welcomeVerification();
 	});
 
-
 	it('Successfully login and restored the session', function() {
 		cy.visit(Cypress.env("demoblaze"));
 		console.log('TEST');
 	});
-
 });

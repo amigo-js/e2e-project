@@ -39,21 +39,6 @@ class LogInPage {
         return cy.get('.btn-primary', {timeout: 30000}).contains('Log in').click({force:true});
     }
 
-    login = () => {
-        cy.wait(3000)
-        this.clickLogIn().then(() => {
-            this.getUserNameInput().then(() => {
-                this.typeUserNameInput(username).then(() => {
-                    this.getPasswordInput().then(() => {
-                        this.typePasswordInput(password)
-                        this.clickLogInBttn()
-                    })
-                })
-            }) 
-            
-        })
-    }
-
     welcomeVerification() {
         return cy.get('#nameofuser', {timeout: 30000}).should('have.text', 'Welcome automatedUser26@example.com');
     }

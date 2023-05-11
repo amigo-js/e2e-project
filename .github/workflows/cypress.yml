@@ -6,7 +6,13 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v3
-      # Install npm dependencies, cache them correctly
-      # and run all Cypress tests
       - name: Cypress run
         uses: cypress-io/github-action@v5
+        with:
+          browser: chrome
+          start: npm run test
+      - name: Upload Mochawesome Report
+        uses: actions/upload-artifact@v2
+        with:
+          name: Mochawesome Report
+          path: cypress/reports/mochawesome-report/*.html

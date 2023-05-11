@@ -3,7 +3,7 @@ describe('File Text Content assertion', () => {
 
   it ('Create a file with text and assert the content', () => {
     cy.writeFile('cypress/filesForTests/data.json', { name: 'Eliza', email: 'eliza@example.com' })
-    cy.readFile('data.json').then((user) => {
+    cy.readFile('cypress/filesForTests/data.json').then((user) => {
       expect(user.name).to.equal('Eliza');
       expect(user.email).to.equal('eliza@example.com');
     })
