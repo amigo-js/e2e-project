@@ -1,6 +1,6 @@
 import '@4tw/cypress-drag-drop';
 
-describe('Upload the file', function() {
+describe('Drag and drop the file', function() {
 
     before(()  => {
         cy.visit(Cypress.env("demoqa") + '/droppable');
