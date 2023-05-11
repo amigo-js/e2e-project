@@ -1,6 +1,6 @@
 const CheapestPhonePage = require("../support/pages/cheapest.phone.page");
 
-describe('Launches', () => {
+describe('Cheapest phone', () => {
     const cheapestPhonePage = new CheapestPhonePage();
 
 	beforeEach(()  => {
