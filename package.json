@@ -27,7 +27,8 @@
   "keywords": [],
   "description": "",
   "dependencies": {
-    "cypress": "^12.4.0"
+    "cypress": "^12.4.0",
+    "npm": "^9.6.6"
   },
   "devDependencies": {
     "@4tw/cypress-drag-drop": "^2.2.2",
